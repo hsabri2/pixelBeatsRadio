@@ -1,0 +1,96 @@
+body {
+	background-color: lightgray;
+}
+
+.header {
+	position: absolute; 
+	top: 0; 
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background-color: grey;
+	color: black;
+	padding: 10px;
+	font-size: 30px;
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+.footer {
+	position: absolute; 
+	width: 100%;
+	height: 100px;
+	left: 0;
+	bottom: 0;  
+	background-color: grey;
+	text-align: center;
+}
+
+.header-search {
+	border: 3px solid black; 
+	text-align: center;
+	padding: 10px;
+	border-radius: 15px;
+	height: 70px;
+	width: auto;
+}
+
+.section1 {
+	padding-top: 120px;
+}
+
+.home {
+	color: black;
+  	text-align: center;
+}
+
+.box {
+	border: 3px solid black; 
+	text-align: center;
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  text-align: center;
+}
+
+.flex-grid-container {
+	display: flex;
+  	grid-template-columns: auto auto auto;
+  	padding: 10px;
+}
+
+input[type=text] {
+	background-color: lightgray;
+	width: 75%;
+	padding: 20px 20px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 10px 0;
+}
+
+input[type=submit] {
+	width: 50%;
+	padding: 20px 20px;
+	margin: 8px 0;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid black;
+	background-color: lightgray;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+input:invalid {
+  border: 1px solid grey;
+}
