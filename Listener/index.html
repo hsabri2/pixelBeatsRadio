@@ -8,12 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Welcome, Alex League!</h1>
+        <h1 id="h1">Welcome, Alex League!</h1>
         <img src="L.PNG" alt="L" class="logo">
-        <div class="search-bar">
-          <input type="text" placeholder="Search...">
+        <form class="search-bar">
+          <input type="text" id="search" placeholder="Search...">
           <button type="submit">Search</button>
-      </div>
+        </form>
+        <div id="message"></div>
     </header>
 
     <footer class="top-footer">
@@ -64,7 +65,7 @@
             <p>Electric Horizon - Neon Horizon</p>
           </div>
           
-          <button class="refresh-btn" >Refresh</button>
+          <button class="refresh-btn" onclick="alert('Refreshing Recommended Songs ...')">Refresh</button>
       </section>
 
       <div class="black-screen">
@@ -152,13 +153,78 @@
           </ul>
 
           <div class="button-container">
-            <button class="pref-btn">Add</button>
-            <button class="pref-btn">Delete</button>
+            <button id="add" class="pref-btn">Add</button>
+            <button id="delete" class="pref-btn">Delete</button>
           </div>
           
       </section>
 
+    
+      <script>
         
+        //modifying DOM element
+        const elem = document.getElementById("h1");
+
+        elem.style.fontSize = "30px";
+        elem.style.fontFamily = "times-new-roman";
+        elem.style.color = "aqua";
+
+        //play/stop message
+        const play = document.querySelectorAll(".play-button");
+        const stop = document.querySelectorAll(".stop-button");
+
+        play.forEach(function(button) {
+        button.addEventListener("click", function() {
+            alert('Playing Song ....');
+          });
+        });
+
+        stop.forEach(function(button) {
+        button.addEventListener("click", function() {
+            alert('Song Stopped ....');
+          });
+        });
+        
+        // form validation
+        const searchForm = document.querySelector(".search-bar");
+        const searchInput = document.getElementById("search");
+        const messageDiv = document.getElementById("message");
+
+        searchForm.addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        const searchValue = searchInput.value.trim();
+
+        if (searchValue == "") {
+            alert("Please enter a search query.");
+        } 
+        if(searchValue != "") {
+            alert(`Searching for: ${searchValue}`);
+        }
+        });
+        //properties
+        const songs = {
+            "Starlight Symphony": "Luna Nova",
+            "Electric Dreams": "Neon Pulse",
+            "Sapphire Skies": "Aurora Beats",
+            "Midnight Serenade": "Stardust Ensemble",
+            "Rhythm of the Cosmos": "Galactic Groove",
+            "City Lights": "Urban Echo",
+            "Ocean Waves": "Seaside Serenades",
+            "Eternal Echoes": "Mystic Melodies",
+            "Sunset Serenade": "Twilight Vibes",
+            "Electric Horizon": "Neon Horizon"
+        };
+
+        // add/del/modify element and displaying in console
+        
+        songs["The 100"] = "Bellamy Blake"; 
+        delete songs["City Lights"];  
+        songs["Electric Dreams"] = "Harry Potter";
+        console.log("Recommended Songs: ", songs);
+        
+      </script>
+
     </main>
 
     <footer class="bottom-footer">
