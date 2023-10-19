@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DJ Schedule</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="producer.js" defer></script>
 </head>
 
 <body>
@@ -17,22 +18,27 @@
     </nav>
 
     <!-- Sub navigation links -->
-    <div id="sub-nav">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
+   <div id="sub-nav">
+    <a href="#" onclick="alert('You clicked Link 1!')">Link 1</a>
+    <a href="#" onclick="alert('You clicked Link 2!')">Link 2</a>
+    <a href="#" onclick="alert('You clicked Link 3!')">Link 3</a>
+  </div>
 
     <!-- Main Content Area -->
     <main>
         <!-- Left Panel -->
         <aside id="left-panel">
-            <h2>Upcoming DJs</h2>
-            <ul>
-                <li>DJ One</li>
-                <li>DJ Two</li>
-                <li>DJ Three</li>
-            </ul>
+          <h2>Upcoming DJs</h2>
+          <div class="action-container">
+            <input type="text" id="dj-name" placeholder="DJ Name">
+            <button onclick="addDJ()">Add DJ</button>
+            <button onclick="removeDJ()">Remove DJ</button>
+          </div>
+          <ul>
+              <li>DJ One</li>
+              <li>DJ Two</li>
+              <li>DJ Three</li>
+          </ul>
         </aside>
 
         <!-- Calendar -->
@@ -58,8 +64,11 @@
 
     <!-- Song Selection -->
     <section id="song-selection">
-        <h2>Select a Song</h2>
-        <!-- Song Selection Form Goes Here -->
+      <h2>Select a Song</h2>
+      <form id="song-form" onsubmit="return validateForm()">
+        <input type="text" id="song-name" placeholder="Song Name" required>
+        <input type="submit" value="Submit">
+      </form>
     </section>
 
     <!-- Footer -->
