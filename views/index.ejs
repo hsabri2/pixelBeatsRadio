@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title><%= title %></title> <!-- Dynamic title -->
     <link rel="stylesheet" type="text/css" href="/styles.css"> 
 </head>
 <body>
 
-    <h1>Welcome to Our Music Site</h1>
+    <h1>Welcome to <%= title %></h1> <!-- Dynamic title -->
 
-    <nav>
-        <ul>
-            <li><a href="/DJ/dj.html">DJ Page</a></li>
-            <li><a href="/Listener/listener.html">Listener Page</a></li>
-            <li><a href="/Producer/producer.html">Producer Page</a></li>
-        </ul>
-    </nav>
+    <h2>Our DJs</h2>
+    <ul>
+        <% djs.forEach(dj => { %> <!-- Dynamic DJ list -->
+            <li><%= dj %></li>
+        <% }) %>
+    </ul>
 
     <!-- Other content can go here -->
 
