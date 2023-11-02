@@ -3,8 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>DJ Screen</title>
+	<title>SWE 432 website</title>
 	<link rel="stylesheet" href="dj.css">
+<script src="jquery.js"></script>
+
 </head>
 <body>
 <header>
@@ -27,21 +29,23 @@
 	<div class="grid-item">
 		<h1>Time Slots</h1>
 		<div class="box">
-			<h2>9:00pm <button>Select</button></h2>
+			<h2>9:00pm <button onclick="setSlot('9:00pm')">Select</button></h2>
 		</div>
 		<div class="box">
-			<h2>10:00pm <button>Select</button></h2>
+			<h2>10:00pm <button onclick="setSlot('10:00pm')">Select</button></h2>
 		</div>
 		<div class="box">
-			<h2>11:00pm <button>Select</button></h2>
+			<h2>11:00pm <button onclick="setSlot('11:00pm')">Select</button></h2>
 		</div>
 		<div class="box">
-			<h2>12:00am <button>Select</button></h2>
+			<h2>12:00am <button onclick="setSlot('12:00pm')">Select</button></h2>
 		</div>
 		<div class="box">
-			<h2>01:00am <button>Select</button></h2>
+			<h2>01:00am <button onclick="setSlot('01:00pm')">Select</button></h2>
 		</div>
+
 	</div>
+
 <dialog open>
   <p>Please select timeslot to assign to playlist then manage tracks!</p>
   <form method="dialog">
@@ -51,7 +55,7 @@
 	<div class="grid-item">
 		<h1>Previous Playlists</h1>
 		<div class="box">
-			<h2>Playlist 1 <button>View</button></h2>
+			<h2>Playlist 1 <button id="view1" >View</button></h2>
 			<input style="height: 1px" type="text" placeholder="Search...">
 			<li>Record 1 <button>copy</button></li>
 			<li>Record 2 <button>copy</button></li>
@@ -59,7 +63,7 @@
 			<li>Record 4 <button>copy</button></li>
 		</div>
 		<div class="box">
-			<h2>Playlist 2 <button>View</button></h2>
+			<h2>Playlist 2 <button id="view2" >View</button></h2>
 			<input style="height: 1px" type="text" placeholder="Search...">
 			<li>Record 5 <button>copy</button></li>
 			<li>Record 6 <button>copy</button></li>
@@ -68,11 +72,12 @@
 		</div>
 	</div>
 	<div class="grid-item">
+		<form name="myForm" onsubmit="return validateForm()" method="post">
 		<h1>Assigned Playlist</h1>
 		<div class="box">
-			<h2>Playlist 1</h2>
-			<input style="height: 1px" type="text" placeholder="Search...">
-			<h2>Selected Timeslot: 11:00pm</h2>
+			<input style="height: 1px" name="Playlist Name" type="text" placeholder="New Playlist Name">
+			<h4>Selected Timeslot: <p id="time"></p></h4>
+
 			<h2>Chosen Records:</h2>
 			<h2>
 			<li>Record 1 <button>delete</button></li>
@@ -81,7 +86,10 @@
 			<li>Record 4 <button>delete</button></li>
 			<li>Record 5 <button>delete</button></li>
 			<li>Record 6 <button>delete</button></li></h2>
+			<input type="submit" value="Save">
 		</div>
+
+	</form>
 	</div>
 	</div>
 </div>
@@ -92,7 +100,41 @@
 	</div>
 
 </footer>
+			<script type="text/javascript">
+			function setSlot(time) {
 
+				if(document.getElementById("time").innerHTML === time) {
+					alert("Already Chosen")
+					return
+				}
+		    document.getElementById("time").innerHTML = time;
 
+		  	alert("time slot chosen!")		  		
+		  }
+			function validateForm() {
+			  let x = document.forms["myForm"]["Playlist Name"].value;
+			  if (x === "" || document.getElementById("time").innerHTML === "") {
+			    alert("Name and timeslot must be filled out");
+			    return false;
+			  }
+			}
+			document.getElementById("view1").addEventListener("click", function() {
+				let recs = []
+				for(let i=1; i<=4; i++) {
+					let s = "Record " + i
+					recs.push(s)
+				}
+			alert(`Playlist 1 View\n${recs}`); 
+			});
+			document.getElementById("view2").addEventListener("click", function() {
+				let recs = []
+				for(let i=5; i<=8; i++) {
+					let s = "Record " + i
+					recs.push(s)
+				}
+			alert(`Playlist 2 View\n${recs}`);
+			});
+		  </script>
 </body>
+
 </html>
