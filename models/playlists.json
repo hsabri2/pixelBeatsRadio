@@ -1,0 +1,93 @@
+[
+    {
+      "name": "Party Mix",
+      "songs": [
+        "song_id_1",
+        "song_id_5",
+        "song_id_10",
+        "song_id_15"
+      ]
+    },
+    {
+      "name": "Chill Vibes",
+      "songs": [
+        "song_id_2",
+        "song_id_6",
+        "song_id_11",
+        "song_id_16"
+      ]
+    },
+    {
+      "name": "Workout Beats",
+      "songs": [
+        "song_id_3",
+        "song_id_7",
+        "song_id_12",
+        "song_id_17"
+      ]
+    },
+    {
+      "name": "Road Trip Jams",
+      "songs": [
+        "song_id_4",
+        "song_id_8",
+        "song_id_13",
+        "song_id_18"
+      ]
+    },
+    {
+      "name": "Relaxing Evening",
+      "songs": [
+        "song_id_9",
+        "song_id_14",
+        "song_id_19",
+        "song_id_20"
+      ]
+    },
+    {
+      "name": "Throwback Hits",
+      "songs": [
+        "song_id_1",
+        "song_id_6",
+        "song_id_11",
+        "song_id_16"
+      ]
+    },
+    {
+      "name": "Top 20",
+      "songs": [
+        "song_id_2",
+        "song_id_7",
+        "song_id_12",
+        "song_id_17"
+      ]
+    },
+    {
+      "name": "Study Session",
+      "songs": [
+        "song_id_3",
+        "song_id_8",
+        "song_id_13",
+        "song_id_18"
+      ]
+    },
+    {
+      "name": "Weekend Vibes",
+      "songs": [
+        "song_id_4",
+        "song_id_9",
+        "song_id_14",
+        "song_id_19"
+      ]
+    },
+    {
+      "name": "Feel Good Mix",
+      "songs": [
+        "song_id_5",
+        "song_id_10",
+        "song_id_15",
+        "song_id_20"
+      ]
+    }
+  ]
+  

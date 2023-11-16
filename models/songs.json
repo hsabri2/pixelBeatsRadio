@@ -1,0 +1,123 @@
+[
+    {
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "duration": 354,
+      "genre": "Rock"
+    },
+    {
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "duration": 292,
+      "genre": "Pop"
+    },
+    {
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "duration": 391,
+      "genre": "Rock"
+    },
+    {
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "duration": 184,
+      "genre": "Pop"
+    },
+    {
+      "title": "Like a Rolling Stone",
+      "artist": "Bob Dylan",
+      "duration": 374,
+      "genre": "Rock"
+    },
+    {
+      "title": "Purple Haze",
+      "artist": "Jimi Hendrix",
+      "duration": 172,
+      "genre": "Rock"
+    },
+    {
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "duration": 357,
+      "genre": "Pop"
+    },
+    {
+      "title": "Stairway to Heaven",
+      "artist": "Led Zeppelin",
+      "duration": 482,
+      "genre": "Rock"
+    },
+    {
+      "title": "Let It Be",
+      "artist": "The Beatles",
+      "duration": 243,
+      "genre": "Pop"
+    },
+    {
+      "title": "Hey Jude",
+      "artist": "The Beatles",
+      "duration": 431,
+      "genre": "Rock"
+    },
+    {
+      "title": "Every Breath You Take",
+      "artist": "The Police",
+      "duration": 251,
+      "genre": "Pop"
+    },
+    {
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "duration": 391,
+      "genre": "Rock"
+    },
+    {
+      "title": "Sweet Child o' Mine",
+      "artist": "Guns N' Roses",
+      "duration": 356,
+      "genre": "Rock"
+    },
+    {
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "duration": 258,
+      "genre": "Rock"
+    },
+    {
+      "title": "I Want to Hold Your Hand",
+      "artist": "The Beatles",
+      "duration": 145,
+      "genre": "Pop"
+    },
+    {
+      "title": "My Generation",
+      "artist": "The Who",
+      "duration": 227,
+      "genre": "Rock"
+    },
+    {
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "duration": 302,
+      "genre": "Rock"
+    },
+    {
+      "title": "Dancing Queen",
+      "artist": "ABBA",
+      "duration": 232,
+      "genre": "Pop"
+    },
+    {
+      "title": "Uptown Funk",
+      "artist": "Mark Ronson ft. Bruno Mars",
+      "duration": 270,
+      "genre": "Pop"
+    },
+    {
+      "title": "Livin' on a Prayer",
+      "artist": "Bon Jovi",
+      "duration": 248,
+      "genre": "Rock"
+    }
+  ]
+  

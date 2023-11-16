@@ -1,0 +1,103 @@
+[
+    {
+      "name": "Calvin Harris",
+      "gender": "Male",
+      "age": 37
+    },
+    {
+      "name": "Marshmello",
+      "gender": "Male",
+      "age": 29
+    },
+    {
+      "name": "David Guetta",
+      "gender": "Male",
+      "age": 54
+    },
+    {
+      "name": "Tiësto",
+      "gender": "Male",
+      "age": 53
+    },
+    {
+      "name": "Armin van Buuren",
+      "gender": "Male",
+      "age": 45
+    },
+    {
+      "name": "Skrillex",
+      "gender": "Male",
+      "age": 34
+    },
+    {
+      "name": "Steve Aoki",
+      "gender": "Male",
+      "age": 44
+    },
+    {
+      "name": "Avicii",
+      "gender": "Male",
+      "age": 28
+    },
+    {
+      "name": "Zedd",
+      "gender": "Male",
+      "age": 32
+    },
+    {
+      "name": "Deadmau5",
+      "gender": "Male",
+      "age": 41
+    },
+    {
+      "name": "Alison Wonderland",
+      "gender": "Female",
+      "age": 35
+    },
+    {
+      "name": "Nina Kraviz",
+      "gender": "Female",
+      "age": 31
+    },
+    {
+      "name": "Peggy Gou",
+      "gender": "Female",
+      "age": 31
+    },
+    {
+      "name": "Charlotte de Witte",
+      "gender": "Female",
+      "age": 29
+    },
+    {
+      "name": "Annie Mac",
+      "gender": "Female",
+      "age": 43
+    },
+    {
+      "name": "Nervo",
+      "gender": "Female",
+      "age": 34
+    },
+    {
+      "name": "Rezz",
+      "gender": "Female",
+      "age": 26
+    },
+    {
+      "name": "Nora En Pure",
+      "gender": "Female",
+      "age": 31
+    },
+    {
+      "name": "Sofi Tukker",
+      "gender": "Female",
+      "age": 35
+    },
+    {
+      "name": "Hannah Wants",
+      "gender": "Female",
+      "age": 35
+    }
+  ]
+  
