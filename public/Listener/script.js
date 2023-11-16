@@ -21,7 +21,17 @@ button.addEventListener("click", function() {
   });
 });
 
-// form validation
+//function to add song
+function addSong(song){
+  alert(`Added: ${song}`);
+}
+
+//function to remove song
+function deleteSong(song){
+  alert(`Deleted: ${song}`);
+}
+
+// form validation for top search bar
 const searchForm = document.querySelector(".search-bar");
 const searchInput = document.getElementById("search");
 const messageDiv = document.getElementById("message");
@@ -38,6 +48,26 @@ if(searchValue != "") {
     alert(`Searching for: ${searchValue}`);
 }
 });
+
+//form validation for songs search bar
+const searchForm2 = document.querySelector(".action-container");
+const searchInput2 = document.getElementById("song-name");
+const messageDiv2 = document.getElementById("message");
+
+searchForm.addEventListener("submit", function(event) {
+event.preventDefault(); 
+
+const searchValue2 = searchInput.value.trim();
+
+if (searchValue2 == "") {
+    alert("Please enter a search query.");
+} 
+
+});
+
+
+
+
 //properties
 const songs = {
     "Starlight Symphony": "Luna Nova",

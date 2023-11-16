@@ -152,6 +152,9 @@ ul {
 .pref-btn:hover {
     background-color: #005b8e;
 }
+.songs-btn:hover{
+    background-color: #005b8e;
+}
 
 .top-footer {
     background-color: #333;
