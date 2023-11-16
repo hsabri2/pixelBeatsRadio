@@ -5,7 +5,7 @@ const path = require('path');
 
 router.get('/', (req, res) => {
     const data = {
-        title: "Home Page",
+        title: "Pixel Beats Radio",
 
     };
     
