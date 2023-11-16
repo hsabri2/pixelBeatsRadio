@@ -28,9 +28,9 @@ async function run() {
 
         const database = client.db('PixelBeatsRadio'); 
         const collection = database.collection('Songs'); 
-    
-        // Read data from songs.json file
-        const songsData = JSON.parse(fs.readFileSync('songs.json', 'utf8'));
+        
+        // Read data 
+        
         
 
     } finally {
