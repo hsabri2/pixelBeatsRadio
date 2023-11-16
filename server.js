@@ -1,6 +1,7 @@
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
+const Song = require('./models/songs.js'); //import song model
 const uri = "mongodb+srv://odessouk:pvdiD7VjHmU9ihPW@cluster0.pm2pmsq.mongodb.net/?retryWrites=true&w=majority";
 const path = require('path');
 const app = express();
@@ -19,14 +20,23 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        // Connect the client to the server	(optional starting in v4.7)
+        // Connect the client to the server	
         await client.connect();
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+        const database = client.db('PixelBeatsRadio'); 
+        const collection = database.collection('Songs'); 
+    
+        // Read data from songs.json file
+        const songsData = JSON.parse(fs.readFileSync('songs.json', 'utf8'));
+        
+
     } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
+        console.log('Connection closed');
     }
 }
 run().catch(console.dir);
