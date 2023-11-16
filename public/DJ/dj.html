@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SWE 432 website</title>
 	<link rel="stylesheet" href="dj.css">
-<script src="jquery.js"></script>
+	<script src="dj.js" defer></script>
 
 </head>
 <body>
@@ -18,9 +18,13 @@
 	<div class="header-text">
 		<h3>DJ Screen</h3>
 	</div>
-	<div>
+	<div class="header-element">
 		<input style="width:50%;" type="text" placeholder="Search...">
 	</div>
+	<div class="header-element">
+		<a href="/">Logout</a>
+	</div>
+
 </div>
 </header>
 <section>
@@ -52,41 +56,29 @@
     <button>OK</button>
   </form>
 </dialog>
-	<div class="grid-item">
+	<div class="grid-item" >
 		<h1>Previous Playlists</h1>
-		<div class="box">
-			<h2>Playlist 1 <button id="view1" >View</button></h2>
-			<input style="height: 1px" type="text" placeholder="Search...">
-			<li>Record 1 <button>copy</button></li>
-			<li>Record 2 <button>copy</button></li>
-			<li>Record 3 <button>copy</button></li>
-			<li>Record 4 <button>copy</button></li>
-		</div>
-		<div class="box">
-			<h2>Playlist 2 <button id="view2" >View</button></h2>
-			<input style="height: 1px" type="text" placeholder="Search...">
-			<li>Record 5 <button>copy</button></li>
-			<li>Record 6 <button>copy</button></li>
-			<li>Record 7 <button>copy</button></li>
-			<li>Record 8 <button>copy</button></li>
+		<div class="my-box" id="playlists-grid">
+
 		</div>
 	</div>
 	<div class="grid-item">
 		<form name="myForm" onsubmit="return validateForm()" method="post">
-		<h1>Assigned Playlist</h1>
+		<h1>New Playlist</h1>
 		<div class="box">
-			<input style="height: 1px" name="Playlist Name" type="text" placeholder="New Playlist Name">
-			<h4>Selected Timeslot: <p id="time"></p></h4>
-
+			<input style="height: 1px" name="name" type="text" placeholder="New Playlist Name">
+			<h4>Selected Timeslot: <div id="time"></div></h4>
+			<input style="height: 1px" id="time-input" name="time" type="hidden" placeholder="Select Timeslot">
 			<h2>Chosen Records:</h2>
-			<h2>
-			<li>Record 1 <button>delete</button></li>
-			<li>Record 2 <button>delete</button></li>
-			<li>Record 3 <button>delete</button></li>
-			<li>Record 4 <button>delete</button></li>
-			<li>Record 5 <button>delete</button></li>
-			<li>Record 6 <button>delete</button></li></h2>
-			<input type="submit" value="Save">
+			<div>
+			<h2 id="records">
+			</h2>
+			<input style="height: 1px" id="songs-input" name="songs" type="hidden" placeholder="Select songs">
+		</div>
+			<br/><br/><br/><br/>
+			<div>
+				<input type="submit" value="Save">
+			</div>
 		</div>
 
 	</form>
@@ -100,41 +92,7 @@
 	</div>
 
 </footer>
-			<script type="text/javascript">
-			function setSlot(time) {
 
-				if(document.getElementById("time").innerHTML === time) {
-					alert("Already Chosen")
-					return
-				}
-		    document.getElementById("time").innerHTML = time;
-
-		  	alert("time slot chosen!")		  		
-		  }
-			function validateForm() {
-			  let x = document.forms["myForm"]["Playlist Name"].value;
-			  if (x === "" || document.getElementById("time").innerHTML === "") {
-			    alert("Name and timeslot must be filled out");
-			    return false;
-			  }
-			}
-			document.getElementById("view1").addEventListener("click", function() {
-				let recs = []
-				for(let i=1; i<=4; i++) {
-					let s = "Record " + i
-					recs.push(s)
-				}
-			alert(`Playlist 1 View\n${recs}`); 
-			});
-			document.getElementById("view2").addEventListener("click", function() {
-				let recs = []
-				for(let i=5; i<=8; i++) {
-					let s = "Record " + i
-					recs.push(s)
-				}
-			alert(`Playlist 2 View\n${recs}`);
-			});
-		  </script>
 </body>
 
 </html>

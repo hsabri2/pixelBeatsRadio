@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const playlistSchema = new Schema({
     name: String,
     songs: [{ type: Schema.Types.ObjectId, ref: 'Song' }],
+    timeslot: String,
 
   });
 

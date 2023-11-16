@@ -4,20 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" type="text/css" href="/styles.css"> 
+    <link rel="stylesheet" type="text/css" href="/Home/styles.css"> 
 </head>
 <body>
 
     <%- body %> <!-- This line will inject the content of your views -->
-    
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/DJ/dj.html">DJ Page</a></li>
-            <li><a href="/Listener/listener.html">Listener Page</a></li>
-            <li><a href="/Producer/producer.html">Producer Page</a></li>
-        </ul>
-    </nav>
+  <section>
+<div class="section1">
+    <div >
+    <div class="grid-container">
+        <div class="box">
+            <a href="/"><h2>Home</h2></a>
+        </div>        
+        <div class="box">
+            <a href="/DJ/dj.html"><h2>DJ</h2></a>
+        </div>
+        <div class="box">
+            <a href="/Listener/listener.html"><h2>Listener</h2></a>
+        </div>
+        <div class="box">
+            <a href="/Producer/producer.html"><h2>Producer</h2></a>
+        </div>
 
+    </div>  
+</div>
+</div>
+</section>
+<footer>
+    <div class="footer">
+        <h2>&copy; 2023 Pixel Beats</h2>
+    </div>
+
+</footer>
 </body>
 </html>
