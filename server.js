@@ -2,7 +2,6 @@ const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
 const Song = require('./models/songs.js'); //import song model
-const uri = "mongodb+srv://odessouk:pvdiD7VjHmU9ihPW@cluster0.pm2pmsq.mongodb.net/?retryWrites=true&w=majority";
 const path = require('path');
 const fs = require('fs');
 const app = express();
@@ -10,6 +9,7 @@ var bodyParser = require('body-parser')
 const port = 3000;
 require('dotenv').config();
 
+const uri = process.env.MONGO_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
