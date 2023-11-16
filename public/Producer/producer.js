@@ -35,16 +35,52 @@ let djObject = {
     }
 };
 
+function fetchDJs() {
+    fetch('/data/djs', {
+    method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+    .then(response => response.json())
+    .then(djs => {
+        const djList = document.getElementById('dj-list');
+        djList.innerHTML = ''; // Clear existing list
+
+        // Populate the list with DJs from the server
+        djs.forEach(dj => {
+            const li = document.createElement('li');
+            li.textContent = dj.name;
+            djList.appendChild(li);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 // Add a DJ
 function addDJ() {
     const djNameInput = document.getElementById('dj-name');
     const name = djNameInput.value;
     if (name) {
-        djObject.addDJ(name);
-        const li = document.createElement('li');
-        li.textContent = name;
-        djList.appendChild(li);
-        djNameInput.value = '';  // Clear the input field
+        fetch('/add-dj', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name })
+        })
+        .then(response => response.json())
+        .then(djs => {
+            // Clear existing DJ list
+            djList.innerHTML = '';
+
+            // Add each DJ to the list
+            djs.forEach(dj => {
+                const li = document.createElement('li');
+                li.textContent = dj.name;
+                djList.appendChild(li);
+            });
+
+            // Clear the input field
+            djNameInput.value = '';
+        })
+        .catch(error => console.error('Error:', error));
     } else {
         alert('Please enter a DJ name');
     }
@@ -55,12 +91,23 @@ function removeDJ() {
     const djNameInput = document.getElementById('dj-name');
     const name = djNameInput.value;
     if (name) {
-        djObject.removeDJ(name);
-        Array.from(djList.children).forEach(dj => {
-            if (dj.textContent === name) {
-                djList.removeChild(dj);
-            }
-        });
+        fetch('/delete-dj', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name })
+        })
+        .then(response => response.json())
+        .then(djs => {
+            // Update the DJ list in the DOM with the updated list
+            djList.innerHTML = '';
+            djs.forEach(dj => {
+                const li = document.createElement('li');
+                li.textContent = dj.name;
+                djList.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
         djNameInput.value = '';  // Clear the input field
     } else {
         alert('Please enter a DJ name to remove');
@@ -79,6 +126,7 @@ function addSong(song, artist) {
 
 // Window Object
 window.onload = function() {
+    fetchDJs();
     alert('Welcome to DJ Schedule Page!');
     setTimeout(() => {
         alert('Enjoy the music!');

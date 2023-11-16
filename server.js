@@ -5,11 +5,14 @@ const Song = require('./models/songs.js'); //import song model
 const path = require('path');
 const fs = require('fs');
 const app = express();
+const cors = require('cors');
 var bodyParser = require('body-parser')
 const port = 3000;
 require('dotenv').config();
 
 const uri = process.env.MONGO_URI;
+
+app.use(cors());
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -36,10 +39,10 @@ async function run() {
         collection.forEach(item => {
             item["timeslot"] = `${Math.floor(Math.random() * (12 - 9 + 1)) + 9}:00pm`
         })
-        console.log(collection)
+        //console.log(collection)
         // Read data from songs.json file
         const songsData = JSON.parse(fs.readFileSync('models/songs.json', 'utf8'));
-        const djData = JSON.parse(fs.readFileSync('models/playlists.json', 'utf8'));
+        const djData = JSON.parse(fs.readFileSync('models/djs.json', 'utf8'));
     } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
@@ -73,9 +76,17 @@ app.use('/data/songs', async (req, res) => {
     res.json(data)
 });
 
-app.use('/data/djs', async (req, res) => {
-    const data = JSON.parse(fs.readFileSync('models/djs.json', 'utf8'));
-    res.json(data)
+app.get('/data/djs', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const djCollection = database.collection('DJs');
+        const djs = await djCollection.find({}).toArray();
+        res.json(djs);
+    } catch (err) {
+        console.error("Error fetching DJs:", err);
+        res.status(500).send('Error fetching DJs');
+    }
 });
 
 app.post('/DJ/dj.html', async (req, res) => {
@@ -103,6 +114,54 @@ app.post('/DJ/dj.html', async (req, res) => {
     fs.writeFileSync('models/playlists.json', JSON.stringify(playlistData));
     res.redirect("/DJ/dj.html")
 })
+
+// Route to add a DJ
+app.post('/add-dj', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const djCollection = database.collection('DJs');
+        // Generate random gender and age if not provided
+        const randomGender = ['Male', 'Female', 'Other'][Math.floor(Math.random() * 3)];
+        const randomAge = Math.floor(Math.random() * (60 - 18 + 1)) + 18; // Random age between 18 and 60
+
+        // Add the DJ to the database
+        const djData = {
+            name: req.body.name,
+            gender: req.body.gender || randomGender,
+            age: req.body.age || randomAge
+        };
+
+        await djCollection.insertOne(djData);
+
+        // Respond with updated DJ list
+        const updatedDJs = await djCollection.find({}).toArray();
+        res.json(updatedDJs);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error adding DJ');
+    } finally {
+        await client.close();
+    }
+});
+
+app.delete('/delete-dj', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const djCollection = database.collection('DJs');
+        
+        // Delete the DJ with the given name
+        await djCollection.deleteOne({ name: req.body.name });
+
+        // Respond with the updated DJ list
+        const updatedDJs = await djCollection.find({}).toArray();
+        res.json(updatedDJs);
+    } catch (err) {
+        console.error("Error deleting DJ:", err);
+        res.status(500).send('Error deleting DJ');
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
