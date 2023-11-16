@@ -6,7 +6,7 @@ const path = require('path');
 router.get('/', (req, res) => {
     const data = {
         title: "Home Page",
-        djs: ["DJ 1", "DJ 2", "DJ 3"]
+
     };
     
     ejs.renderFile(path.join(__dirname, '../views/index.ejs'), data, (err, str) => {
