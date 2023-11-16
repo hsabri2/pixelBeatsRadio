@@ -1,7 +1,7 @@
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
-const Song = require('./models/songs.js'); //import song model
+const session = require('express-session');
 const path = require('path');
 const fs = require('fs');
 const app = express();
@@ -11,6 +11,7 @@ const port = 3000;
 require('dotenv').config();
 
 const uri = process.env.MONGO_URI;
+const key = process.env.MONGO_PASSWORD
 
 app.use(cors());
 
@@ -51,6 +52,15 @@ async function run() {
 }
 run().catch(console.dir);
 
+app.use(session({
+    secret: key,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        secure: false, // Set to true if using HTTPS
+        maxAge: 30 * 60 * 1000 // e.g., 30 minutes for session timeout
+    }
+}));
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
@@ -66,14 +76,38 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
-app.use('/data/playlists', async (req, res) => {
-    const data = JSON.parse(fs.readFileSync('models/playlists.json', 'utf8'));
-    res.json(data)
+app.get('/data/playlists', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const playlistsCollection = database.collection('Playlists');
+        const playlists = await playlistsCollection.find({}).toArray();
+        res.json(playlists);
+    } catch (err) {
+        console.error("Error fetching playlists:", err);
+        res.status(500).send('Error fetching playlists');
+    }
 });
 
-app.use('/data/songs', async (req, res) => {
-    const data = JSON.parse(fs.readFileSync('models/songs.json', 'utf8'));
-    res.json(data)
+app.get('/data/songs/:id', async (req, res) => {
+    try {
+        await client.connect();
+        const songId = req.params.id;
+        const database = client.db('PixelBeatsRadio');
+        const songsCollection = database.collection('Songs');
+
+        // Assuming '_id' is used as the identifier in your Songs collection
+        const song = await songsCollection.findOne({ _id: songId });
+
+        if (song) {
+            res.json(song);
+        } else {
+            res.status(404).send('Song not found');
+        }
+    } catch (err) {
+        console.error("Error fetching song:", err);
+        res.status(500).send('Error fetching song');
+    }
 });
 
 app.get('/data/djs', async (req, res) => {
@@ -161,6 +195,17 @@ app.delete('/delete-dj', async (req, res) => {
         console.error("Error deleting DJ:", err);
         res.status(500).send('Error deleting DJ');
     }
+});
+
+app.post('/clear-session', function(req, res) {
+    req.session.destroy(err => {
+        if (err) {
+            console.log("Session couldn't be destroyed.");
+            res.status(500).send('Error');
+        } else {
+            res.send('Session cleared');
+        }
+    });
 });
 
 app.listen(port, () => {

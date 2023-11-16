@@ -114,6 +114,37 @@ function removeDJ() {
     }
 }
 
+function fetchPlaylists() {
+    fetch('/data/playlists')
+    .then(response => response.json())
+    .then(playlists => {
+        const playlistContainer = document.getElementById('playlist');
+        playlistContainer.innerHTML = ''; // Clear existing content
+
+        playlists.forEach(playlist => {
+            fetchSongsForPlaylist(playlist.songs, playlistContainer);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// This function fetches song details based on song IDs and appends them to the playlist
+function fetchSongsForPlaylist(songIds, container) {
+    songIds.forEach(songId => {
+        fetch(`/data/songs/${songId}`)
+        .then(response => response.json())
+        .then(song => {
+            const dt = document.createElement('dt');
+            dt.textContent = song.name; // Assuming the song object has a 'name' field
+            const dd = document.createElement('dd');
+            dd.textContent = song.artist; // Assuming the song object has an 'artist' field
+            container.appendChild(dt);
+            container.appendChild(dd);
+        })
+        .catch(error => console.error('Error fetching song:', error));
+    });
+}
+
 // Add a Song
 function addSong(song, artist) {
     const dt = document.createElement('dt');
@@ -127,6 +158,7 @@ function addSong(song, artist) {
 // Window Object
 window.onload = function() {
     fetchDJs();
+    fetchPlaylists();
     alert('Welcome to DJ Schedule Page!');
     setTimeout(() => {
         alert('Enjoy the music!');
@@ -142,6 +174,19 @@ function validateForm() {
     }
     return true;
 }
+
+window.addEventListener('beforeunload', function(event) {
+    fetch('/clear-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    });
+});
+
+
+
+
+
+
 
 // Variables, Comparison Operators, Logical Operators, Conditionals, Loops, and Functions
 function exampleFunction() {
