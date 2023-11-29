@@ -54,7 +54,7 @@ main{
 .recommendations{
     background-color:#b6dfff;
     padding: 40px;
-    margin-left: 20px;  
+    margin-left: 30px;  
     border-radius: 7px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     display: flexbox;
@@ -143,6 +143,26 @@ ul {
    
 }
 
+#searchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Style for the dropdown */
+#preferenceDropdown {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    font-size: 14px;
+}
+
 .refresh-btn{
     margin-top: 20px;
 }
@@ -154,6 +174,7 @@ ul {
 }
 .songs-btn:hover{
     background-color: #005b8e;
+
 }
 
 .top-footer {

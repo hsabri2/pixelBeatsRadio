@@ -20,10 +20,9 @@
     <footer class="top-footer">
       <nav>
           <a href="#">Home</a>
-          <a href="#">Discover</a>
-          <a href="#">Profile</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Logout</a>
+          <a href="#botfot">About</a>
+          <a href="#" id="contactLink">Contact Us</a>
+          <a href="http://localhost:3000/">Logout</a>
 
       </nav>
     </footer>
@@ -31,20 +30,21 @@
     
     <main>
         <section class="recommendations">
-          <h2>Recommended Songs</h2>
+          <h2>All Songs</h2>
           <div class="action-container">
             
             <input type="text" id="song-name" placeholder="Enter name of a song">
-            <button id="add" class="songs-btn" onclick=addSong()>Add</button>
-            <button id="delete" class="songs-btn" onclick=deleteSong()>Delete</button>
+          </br>
+          </br>
+            <button id="add-song" class="songs-btn" onclick=addSong()>Add</button>
+            <button id="del-song" class="songs-btn" onclick=deleteSong()>Delete</button>
           </div>
           
           
-      </section>
+        </section>
 
       <div class="black-screen">
         <div class="grid-container">
-            
             <div class="grid-item">
               <img src="nature.jpg" alt="nature" >
               <div class="grid-button-container">
@@ -114,24 +114,21 @@
       </div>
 
       <section class="preferences">
-          <h2>My Preferences</h2>
-          <ul>
-              <li><a href="#"> Rock </a></li>
-              <li><a href="#">EDM</a></li>
-              <li><a href="#">Favorite DJs</a></li>
-              <li><a href="#">Favorite Songs</a></li>
-              <li><a href="#">Country</a></li>
-              <li><a href="#">Pop</a></li>
-              <li><a href="#">Desi</a></li>
-
-          </ul>
-
-          <div class="button-container">
-            <button id="add" class="pref-btn">Add</button>
-            <button id="delete" class="pref-btn">Delete</button>
-          </div>
-          
+        <h2>My Preferences</h2>
+        <div>
+            <input type="text" id="searchInput" placeholder="Search...">
+        </br>
+            <select id="preferenceDropdown"></select>
+        </div>
+      
+      </br>
+        <div class="button-container">
+            
+            <button id="add-pref" class="pref-btn">Add</button>
+            <button id="del-pref" class="pref-btn">Delete</button>
+        </div>
       </section>
+    
 
     
       <script src="script.js"></script>
@@ -139,7 +136,7 @@
 
     </main>
 
-    <footer class="bottom-footer">
+    <footer class="bottom-footer" id="botfot">
       <p>
         The music scene is buzzing with excitement as we delve into the latest tunes and DJs making waves in the industry. 
         From electrifying EDM anthems that ignite dance floors to soulful ballads that tug at the heartstrings,
