@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DJ Schedule</title>
     <link rel="stylesheet" type="text/css" href="producer.css">
     <script src="producer.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 </head>
-
 <body>
     <!-- Navigation bar -->
     <nav>
@@ -19,52 +19,65 @@
 
     <!-- Sub navigation links -->
     <div id="sub-nav">
-      <a href="/">Home</a>
-      <a href="/DJ/dj.html">DJ</a>
-      <a href="/Listener/listener.html">Listener</a>
+        <a href="/">Home</a>
+        <a href="/DJ/dj.html">DJ</a>
+        <a href="/Listener/listener.html">Listener</a>
     </div>
 
     <!-- Main Content Area -->
     <main>
         <!-- Left Panel -->
         <aside id="left-panel">
-          <h2>Upcoming DJs</h2>
-          <div class="action-container">
-            <input type="text" id="dj-name" placeholder="DJ Name">
-            <button onclick="addDJ()">Add DJ</button>
-            <button onclick="removeDJ()">Remove DJ</button>
-          </div>
-          <ul id="dj-list">
-          </ul>
+            <h2>Upcoming DJs</h2>
+            <div class="action-container">
+                <input type="text" id="dj-name" placeholder="DJ Name">
+                <button onclick="addDJ()">Add DJ</button>
+                <button onclick="removeDJ()">Remove DJ</button>
+            </div>
+            <ul id="dj-list"></ul>
         </aside>
 
         <!-- Calendar -->
         <section id="calendar">
-          <div id="full-calendar"></div> <!-- Placeholder for FullCalendar -->
-      </section>
+            <div class="wrapper">
+                <header>
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                        <span id="next" class="material-symbols-rounded">chevron_right</span>
+                    </div>
+                </header>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="days"></ul>
+                </div>
+            </div>
+        </section>
 
         <!-- Right Panel -->
         <aside id="right-panel">
-          <h2>Today's Playlist</h2>
-
-          <!-- Delete Playlist -->
-          <input type="text" id="delete-playlist-name" placeholder="Playlist Name">
-          <button onclick="deletePlaylist()">Delete Playlist</button>
-
-          <!-- Playlist Display -->
-          <dl id="playlist">
-              <!-- Playlists will be added here dynamically -->
-          </dl>
+            <h2>Today's Playlist</h2>
+            <input type="text" id="delete-playlist-name" placeholder="Playlist Name">
+            <button onclick="deletePlaylist()">Delete Playlist</button>
+            <dl id="playlist"></dl>
         </aside>
     </main>
 
     <!-- Song Selection -->
     <section id="song-selection">
-      <h2>Select a Song</h2>
-      <form id="song-form" onsubmit="return validateForm()">
-        <input type="text" id="song-name" placeholder="Song Name" required>
-        <input type="submit" value="Submit">
-      </form>
+        <h2>Select a Song</h2>
+        <form id="song-form" onsubmit="return validateForm()">
+            <input type="text" id="song-name" placeholder="Song Name" required>
+            <input type="submit" value="Submit">
+        </form>
     </section>
 
     <!-- Footer -->
@@ -72,5 +85,4 @@
         <p>&copy; Pixel Beats Studio. All Rights Reserved.</p>
     </footer>
 </body>
-
 </html>

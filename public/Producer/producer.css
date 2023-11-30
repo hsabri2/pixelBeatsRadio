@@ -1,4 +1,4 @@
-/* External Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* Basic Styling */
 body {
@@ -7,67 +7,62 @@ body {
     padding: 0;
     line-height: 1.6;
     background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* make main container take minimum full height of screen */
 }
 
-main {
-    flex: 1; /* allow main content to expand and consume available space */
-}
-
+/* Navigation Bar */
 nav {
-    background: #333;
+    background-color: #0077b6;
     color: #fff;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Center align nav items */
     padding: 1rem;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
 #sub-nav {
-    background: #555;
-    padding: 0.5rem;
+    display: flex; /* Align sub-nav items horizontally */
+    padding: 0;
+    margin: 0;
     text-align: center;
+    list-style-type: none; /* Remove default list styling */
 }
 
 #sub-nav a {
     color: #fff;
-    margin-right: 1rem;
     text-decoration: none;
+    text-align: center;
+    margin: 0 1rem; /* Adjust as needed for spacing */
+    font-weight: bold;
 }
 
+/* Main Layout */
 main {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background-color: #fff;
     margin: 1rem 0;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Sidebars */
 aside {
     width: 25%;
     padding: 1rem;
+    background-color: #b6dfff; /* Light blue background */
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
-#calendar {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Calendar Section */
 #calendar-box {
-    width: 80%;
+    width: 50%;
     height: 300px;
     background-color: #e0e0e0;
     border-radius: 10px;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
-    text-align: center
+    text-align: center;
 }
 
+/* Song Selection */
 #song-selection {
     background: #f4f4f4;
     padding: 1rem;
@@ -75,14 +70,15 @@ aside {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Footer */
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 1rem;
 }
 
-/* Advanced CSS */
+/* List Styles */
 #left-panel ul, #right-panel dl {
     list-style: none;
     padding: 0;
@@ -95,4 +91,110 @@ footer {
     background-color: #d0d0d0;
     border-radius: 5px;
     text-align: center;
+}
+
+/* Calendar CSS */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper {
+    width: 450px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons {
+    display: flex;
+}
+header .icons span {
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+.icons span:last-child {
+    margin-right: -10px;
+}
+header .icons span:hover {
+    background: #f2f2f2;
+}
+header .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.calendar {
+    padding: 20px;
+}
+.calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+.calendar .days {
+    margin-bottom: 20px;
+}
+.calendar li {
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+}
+.calendar .weeks li {
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+.days li.inactive {
+    color: #aaa;
+}
+.days li.active {
+    color: #fff;
+}
+.days li::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before {
+    background: #9B59B6;
+}
+.days li:not(.active):hover::before {
+    background: #f2f2f2;
+}
+
+/* Button Styling */
+button {
+    background-color: #0077b6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005b8e;
 }

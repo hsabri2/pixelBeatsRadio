@@ -1,115 +1,133 @@
 body {
-	background-color: lightgray;
-	padding-bottom: 50px;
+    background-color: #f0f0f0; /* Light gray background */
+    padding-bottom: 50px;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
 a {
-	color: black;
-	text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 .header-element {
-	font-size: 30px;
-	display: flex;
-	text-align: center;
-	align-items: center;
+    font-size: 30px;
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 
 .header {
-	position: absolute; 
-	top: 0; 
-	left: 0;
-	width: 100%;
-	height: 100px;
-	background-color: grey;
-	color: black;
-	padding: 10px;
-	font-size: 30px;
-	display: grid;
-	grid-template-columns: auto auto auto auto;
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #0077b6; /* Blue background */
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 
 .footer {
-	position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Dark footer */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
 
-	background-color: grey;
-	text-align: center;
-}
 .my-box {
-	overflow-x: hidden;
-  overflow-y: auto;
-  text-align:justify;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
 }
+
 .header-search {
-	border: 3px solid black; 
-	text-align: center;
-	padding: 10px;
-	border-radius: 15px;
-	height: 70px;
-	width: auto;
+    border: 3px solid black; 
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    height: 70px;
+    width: auto;
 }
 
 .section1 {
-	padding-top: 120px;
+    padding-top: 120px;
 }
 
 .home {
-	color: black;
-  	text-align: center;
+    color: black;
+    text-align: center;
 }
 
 .box {
-	border: 3px solid black; 
-	text-align: center;
-	padding: 10px;
-	border-radius: 15px;
+    border: 3px solid black; 
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #b6dfff; /* Light blue box */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .grid-container {
-	overflow-y:scroll;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    gap: 20px;
 }
 
 .grid-item {
-	overflow-y:scroll;
-  padding: 20px;
-  text-align: center;
+    overflow-y: scroll;
+    padding: 20px;
+    text-align: center;
+    background-color: #e0e0e0; /* Light gray grid item */
 }
 
 .flex-grid-container {
-	display: flex;
-  	grid-template-columns: auto auto auto;
-  	padding: 10px;
+    display: flex;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
 }
 
-input[type=text] {
-	background-color: lightgray;
-	width: 75%;
-	padding: 20px 20px;
-	border: 1px solid grey;
-	border-radius: 5px;
-	display: inline-block;
-	margin: 10px 0;
+input[type=text], input[type=submit] {
+    background-color: #f0f8ff; /* Light blue input */
+    width: 75%;
+    padding: 20px 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px 0;
+    color: #333;
 }
 
 input[type=submit] {
-	width: 50%;
-	padding: 20px 20px;
-	margin: 8px 0;
-	cursor: pointer;
-	border-radius: 5px;
-	border: 1px solid black;
-	background-color: lightgray;
+    width: 50%;
+    padding: 20px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #0077b6; /* Blue submit button */
+    color: white;
+}
+
+input[type=submit]:hover {
+    background-color: #005b8e; /* Darker blue on hover */
 }
 
 input:invalid {
-  border: 2px dashed red;
+    border: 2px dashed red;
 }
-input:invalid {
-  border: 1px solid grey;
+
+input:valid {
+    border: 1px solid grey;
 }
+
+/* Add additional styles as needed */
