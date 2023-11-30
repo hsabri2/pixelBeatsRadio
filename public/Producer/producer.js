@@ -217,7 +217,7 @@ function fetchPlaylists() {
 
 function toggleSongs(dtElement, songs) {
     // Find the next element which should be the songs list
-    const songsList = dtElement.nextElementSibling;
+    const songsList = dtElement.nextSibling;
 
     // Toggle the display of the songs list
     if (songsList.style.display === 'none' || !songsList.style.display) {
@@ -241,6 +241,79 @@ function deletePlaylist() {
     })
     .catch(error => console.error('Error:', error));
 }
+
+// Search functionality for DJs
+function searchDJs(query) {
+    fetch('/data/djs')
+    .then(response => response.json())
+    .then(djs => {
+        const filteredDJs = djs.filter(dj => dj.name.toLowerCase().includes(query.toLowerCase()));
+        updateDJList(filteredDJs);
+    });
+}
+
+// Function to update the DJ list in the DOM
+function updateDJList(djs) {
+    const djList = document.getElementById('dj-list');
+    djList.innerHTML = '';
+    djs.forEach(dj => {
+        const li = document.createElement('li');
+        li.textContent = dj.name;
+        djList.appendChild(li);
+    });
+    if (djs.length === 0) {
+        djList.innerHTML = '<li>No results found</li>';
+    }
+}
+
+// Search functionality for Playlists
+function searchPlaylists(query) {
+    fetch('/data/playlists')
+    .then(response => response.json())
+    .then(playlists => {
+        const filteredPlaylists = playlists.filter(playlist => playlist.name.toLowerCase().includes(query.toLowerCase()));
+        updatePlaylistList(filteredPlaylists);
+    });
+}
+
+// Function to update the Playlist list in the DOM
+function updatePlaylistList(playlists) {
+    const playlistContainer = document.getElementById('playlist');
+    playlistContainer.innerHTML = '';
+    playlists.forEach(playlist => {
+        const dt = document.createElement('dt');
+        dt.textContent = playlist.name;
+        dt.classList.add('playlist-name');
+        dt.onclick = () => toggleSongs(dt, playlist.songs);
+        playlistContainer.appendChild(dt);
+    });
+    if (playlists.length === 0) {
+        playlistContainer.innerHTML = '<dt>No results found</dt>';
+    }
+}
+
+// Event listener for search bar input
+document.getElementById('search-input').addEventListener('input', (e) => {
+    const query = e.target.value;
+    if (query) {
+        // Existing search logic
+    } else {
+        // Restore default lists when the search bar is cleared
+        fetchDJs();
+        fetchPlaylists();
+    }
+});
+
+// Event listeners for the new search buttons
+document.getElementById('search-dj-btn').addEventListener('click', () => {
+    const query = document.getElementById('search-input').value;
+    searchDJs(query);
+});
+
+document.getElementById('search-playlist-btn').addEventListener('click', () => {
+    const query = document.getElementById('search-input').value;
+    searchPlaylists(query);
+});
 
 // Window Object
 window.onload = function() {

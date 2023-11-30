@@ -35,6 +35,34 @@ nav {
     font-weight: bold;
 }
 
+/* Search Container */
+#search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 8px;
+    margin-right: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#search-dj-btn, #search-playlist-btn {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-dj-btn:hover, #search-playlist-btn:hover {
+    background-color: #005b8e;
+}
+
 /* Main Layout */
 main {
     display: flex;
