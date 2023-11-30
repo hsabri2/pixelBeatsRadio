@@ -143,6 +143,24 @@ ul {
    
 }
 
+.song-box {
+    display: block;
+    background-color: #ffffff;
+    border-radius: 30px; /* Adjust the border-radius to change the oval shape */
+    padding: 8px 16px;
+    margin: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.song-box:hover {
+    transform: scale(1.1);
+}
+
+
 #searchInput {
     padding: 8px;
     border: 1px solid #ccc;

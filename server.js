@@ -149,6 +149,54 @@ app.post('/DJ/dj.html', async (req, res) => {
     res.redirect("/DJ/dj.html")
 })
 
+app.post('/add-playlist', async(req, res) => {
+    try{
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const playlistCollection = database.collection('Playlists');
+        const randtimeslot = ['9.00am', '12.00pm', '3.00pm'][Math.floor(Math.random() * 3)];
+        const emptysongArr = [];
+
+        //add playlist to DB
+        const songData = {
+            name: req.body.name,
+            songs: req.body.songs || emptysongArr,
+            timeslot: req.body.timeslot || randtimeslot
+        };
+
+        await playlistCollection.insertOne(songData);
+
+        //respond
+        const updatedPlaylists = await playlistCollection.find({}).toArray();
+        res.json(updatedPlaylists);
+
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Error adding Song');
+    } finally {
+        await client.close();
+    }
+});
+
+app.delete('/delete-playlist', async (req, res) => {
+    try {
+        await client.connect();
+        const database = client.db('PixelBeatsRadio');
+        const playlistCollection = database.collection('Playlists');
+        
+        // Delete the song with the given name
+        await playlistCollection.deleteOne({ name: req.body.name });
+
+        // Respond with the updated song list
+        const updatedPlaylists = await playlistCollection.find({}).toArray();
+        res.json(updatedPlaylists);
+    } catch (err) {
+        console.error("Error deleting Song:", err);
+        res.status(500).send('Error deleting Song');
+    }
+});
+
 // Route to add a DJ
 app.post('/add-dj', async (req, res) => {
     try {
