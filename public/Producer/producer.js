@@ -122,37 +122,70 @@ function fetchPlaylists() {
         playlistContainer.innerHTML = ''; // Clear existing content
 
         playlists.forEach(playlist => {
-            fetchSongsForPlaylist(playlist.songs, playlistContainer);
+            const dt = document.createElement('dt');
+            dt.textContent = playlist.name; // Playlist name
+            dt.classList.add('playlist-name'); // Add class for styling or identification
+            dt.onclick = () => displaySongs(playlist.songs); // Add click event
+            playlistContainer.appendChild(dt);
         });
     })
     .catch(error => console.error('Error:', error));
 }
 
-// This function fetches song details based on song IDs and appends them to the playlist
-function fetchSongsForPlaylist(songIds, container) {
-    songIds.forEach(songId => {
-        fetch(`/data/songs/${songId}`)
-        .then(response => response.json())
-        .then(song => {
+function fetchPlaylists() {
+    fetch('/data/playlists')
+    .then(response => response.json())
+    .then(playlists => {
+        const playlistContainer = document.getElementById('playlist');
+        playlistContainer.innerHTML = ''; // Clear existing content
+
+        playlists.forEach(playlist => {
             const dt = document.createElement('dt');
-            dt.textContent = song.name; // Assuming the song object has a 'name' field
-            const dd = document.createElement('dd');
-            dd.textContent = song.artist; // Assuming the song object has an 'artist' field
-            container.appendChild(dt);
-            container.appendChild(dd);
-        })
-        .catch(error => console.error('Error fetching song:', error));
-    });
+            dt.textContent = playlist.name; // Playlist name
+            dt.classList.add('playlist-name'); // Add class for styling or identification
+            dt.onclick = () => toggleSongs(dt, playlist.songs); // Add click event
+            playlistContainer.appendChild(dt);
+
+            // Initially hide the songs list
+            const songsList = document.createElement('div');
+            songsList.style.display = 'none'; // Initially hidden
+            songsList.classList.add('songs-list'); // Add class for styling or identification
+            playlist.songs.forEach(songName => {
+                const dd = document.createElement('dd');
+                dd.textContent = songName; // Displaying song name
+                songsList.appendChild(dd);
+            });
+            playlistContainer.appendChild(songsList);
+        });
+    })
+    .catch(error => console.error('Error:', error));
 }
 
-// Add a Song
-function addSong(song, artist) {
-    const dt = document.createElement('dt');
-    dt.textContent = song;
-    const dd = document.createElement('dd');
-    dd.textContent = artist;
-    playlist.appendChild(dt);
-    playlist.appendChild(dd);
+function toggleSongs(dtElement, songs) {
+    // Find the next element which should be the songs list
+    const songsList = dtElement.nextElementSibling;
+
+    // Toggle the display of the songs list
+    if (songsList.style.display === 'none' || !songsList.style.display) {
+        songsList.style.display = 'block'; // Show songs
+    } else {
+        songsList.style.display = 'none'; // Hide songs
+    }
+}
+
+function deletePlaylist() {
+    const playlistName = document.getElementById('delete-playlist-name').value;
+
+    fetch('/delete-playlist', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: playlistName })
+    })
+    .then(response => response.json())
+    .then(() => {
+        fetchPlaylists(); // Update the playlist display
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 // Window Object
